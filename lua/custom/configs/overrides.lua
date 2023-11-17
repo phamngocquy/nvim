@@ -46,7 +46,7 @@ M.mason = {
     "bash-language-server",
     "black",
     "buf-language-server",
-    "docker-compose-language-server",
+    "docker-compose-language-service",
     "dockerfile-language-server",
     "fixjson",
     "gopls",
