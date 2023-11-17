@@ -66,15 +66,19 @@ local plugins = {
   },
   {
     "ntpeters/vim-better-whitespace",
+    lazy = false,
   },
   {
     "heavenshell/vim-pydocstring",
+    lazy = false,
   },
   {
     "wfxr/minimap.vim",
+    lazy = false,
   },
   {
     "catppuccin/nvim",
+    lazy = false,
   },
 
   -- ["kristijanhusak/vim-dadbod-ui"] = {
@@ -83,9 +87,6 @@ local plugins = {
   -- ["tpope/vim-dadbod"] = {
   -- },
   --
-  -- [""] = {
-  --   as = "catppuccin"
-  -- }
 }
 
 return plugins
