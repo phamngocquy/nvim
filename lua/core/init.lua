@@ -5,7 +5,7 @@ local config = require("core.utils").load_config()
 -------------------------------------- globals -----------------------------------------
 g.nvchad_theme = config.ui.theme
 g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
-g.toggle_theme_icon = "   "
+g.toggle_theme_icon = "  "
 g.transparency = config.ui.transparency
 
 -------------------------------------- options ------------------------------------------
@@ -50,6 +50,10 @@ opt.updatetime = 250
 opt.whichwrap:append "<>[]hl"
 
 g.mapleader = ";"
+g.pydocstring_doq_path = "/home/qpham/.pyenv/shims/doq"
+g.better_whitespace_enabled=1
+g.strip_whitespace_on_save=1
+g.strip_whitespace_confirm=0
 
 -- disable some default providers
 for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
