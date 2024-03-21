@@ -5,13 +5,14 @@ local b = null_ls.builtins
 local sources = {
 
   -- webdev stuff
-  b.formatting.prettier.with { filetypes = { "html", "markdown", "css", "js", "jsx", "javascriptreact" } }, -- so prettier works only on these filetypes
+  b.formatting.prettier.with { filetypes = { "html", "markdown", "css", "js", "jsx", "javascriptreact" } },
   b.diagnostics.eslint.with { filetypes = { "html", "markdown", "css", "js", "jsx", "javascriptreact" } },
   -- others
   b.formatting.black.with { filetypes = { "python" } },
   b.formatting.gofmt.with { filetypes = { "go" } },
   b.formatting.shfmt.with { filetypes = { "sh" } },
   b.formatting.yamlfmt.with { filetypes = { "yml", "yaml" } },
+  b.formatting.fixjson.with { filetypes = { "json", "jsonc" } },
   -- b.diagnostics.ruff.with { filetypes = { "python" } },
 
   -- Lua
