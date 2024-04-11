@@ -19,12 +19,27 @@ lspconfig.pyright.setup {
   filetypes = { "python" },
 
   settings = {
+    pyright = {
+      -- Using Ruff's import organizer
+      disableOrganizeImports = true,
+    },
     python = {
       analysis = {
-        autoSearchPaths = true,
-        diagnosticMode = "workspace",
-        useLibraryCodeForTypes = true,
+        -- autoSearchPaths = true,
+        -- diagnosticMode = "workspace",
+        -- useLibraryCodeForTypes = true,
+        ignore = { "*" },
       },
+    },
+  },
+}
+
+lspconfig.ruff_lsp.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  init_options = {
+    settings = {
+      args = {},
     },
   },
 }

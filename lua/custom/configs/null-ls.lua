@@ -13,7 +13,7 @@ local sources = {
   b.formatting.shfmt.with { filetypes = { "sh" } },
   b.formatting.yamlfmt.with { filetypes = { "yml", "yaml" } },
   b.formatting.fixjson.with { filetypes = { "json", "jsonc" } },
-  -- b.diagnostics.ruff.with { filetypes = { "python" } },
+  b.diagnostics.ruff.with { filetypes = { "python" } },
 
   -- Lua
   b.formatting.stylua,
