@@ -14,6 +14,7 @@ local sources = {
   b.formatting.yamlfmt.with { filetypes = { "yml", "yaml" } },
   b.formatting.fixjson.with { filetypes = { "json", "jsonc" } },
   b.diagnostics.ruff.with { filetypes = { "python" } },
+  b.formatting.clang_format.with {filetypes = {"cpp", "c"}},
 
   -- Lua
   b.formatting.stylua,
