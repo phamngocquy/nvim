@@ -81,12 +81,13 @@ local plugins = {
     lazy = false,
   },
 
-  -- ["kristijanhusak/vim-dadbod-ui"] = {
-  -- },
-  --
-  -- ["tpope/vim-dadbod"] = {
-  -- },
-  --
+  {
+    "xemptuous/sqlua.nvim",
+    lazy = false,
+    config = function()
+      require("sqlua").setup()
+    end,
+  },
 }
 
 return plugins
