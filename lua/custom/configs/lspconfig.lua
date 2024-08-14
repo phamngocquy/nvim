@@ -17,31 +17,6 @@ lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "python" },
-
-  settings = {
-    pyright = {
-      -- Using Ruff's import organizer
-      disableOrganizeImports = true,
-    },
-    python = {
-      analysis = {
-        -- autoSearchPaths = true,
-        -- diagnosticMode = "workspace",
-        -- useLibraryCodeForTypes = true,
-        ignore = { "*" },
-      },
-    },
-  },
-}
-
-lspconfig.ruff_lsp.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  init_options = {
-    settings = {
-      args = {},
-    },
-  },
 }
 
 lspconfig.yamlls.setup {
@@ -74,12 +49,12 @@ lspconfig.bashls.setup {
   capabilities = capabilities,
 }
 
-lspconfig.docker_compose_language_service.setup {
+lspconfig.dockerls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
 
-lspconfig.dockerls.setup {
+lspconfig.clangd.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
@@ -105,6 +80,16 @@ lspconfig.ruby_ls.setup {
 }
 
 lspconfig.clangd.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+lspconfig.sqlls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+lspconfig.docker_compose_language_service.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
