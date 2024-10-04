@@ -6,7 +6,7 @@ local sources = {
 
   -- webdev stuff
   b.formatting.prettier.with { filetypes = { "html", "markdown", "css", "js", "jsx", "javascriptreact", "javascript" } },
-  b.diagnostics.eslint.with { filetypes = { "html", "markdown", "css", "js", "jsx", "javascriptreact", "javascript" } },
+  b.diagnostics.eslint.with { filetypes = { "html", "css", "js", "jsx", "javascriptreact", "javascript" } },
   -- others
   b.formatting.black.with { filetypes = { "python" } },
   b.formatting.gofmt.with { filetypes = { "go" } },
@@ -15,6 +15,7 @@ local sources = {
   b.formatting.fixjson.with { filetypes = { "json", "jsonc" } },
   b.formatting.clang_format.with { filetypes = { "cpp", "c" } },
   b.formatting.sqlfmt.with { filetypes = { "sql" } },
+  -- b.formatting.dockerls.with { filetypes = { "dockerfile" } },
 
   -- Lua
   b.formatting.stylua,

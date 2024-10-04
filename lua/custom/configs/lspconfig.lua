@@ -59,7 +59,7 @@ lspconfig.clangd.setup {
   capabilities = capabilities,
 }
 
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   init_options = {
@@ -74,7 +74,7 @@ lspconfig.html.setup {
   capabilities = capabilities,
 }
 
-lspconfig.ruby_ls.setup {
+lspconfig.ruby_lsp.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }

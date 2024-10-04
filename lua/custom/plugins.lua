@@ -81,12 +81,55 @@ local plugins = {
     lazy = false,
   },
 
+  -- sql
   {
     "xemptuous/sqlua.nvim",
     lazy = false,
     config = function()
       require("sqlua").setup()
     end,
+  },
+  -- markdown render
+  {
+    "ellisonleao/glow.nvim",
+    lazy = true,
+    config = true,
+    cmd = "Glow",
+  },
+
+  -- chatgpt ui
+  {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("chatgpt").setup {
+        openai_params = {
+          model = "ModelCloud/Meta-Llama-3.1-70B-Instruct-gptq-4bit",
+          frequency_penalty = 0,
+          presence_penalty = 0,
+          max_tokens = 4095,
+          temperature = 0.2,
+          top_p = 0.1,
+          n = 1,
+        },
+        openai_edit_params = {
+          model = "ModelCloud/Meta-Llama-3.1-70B-Instruct-gptq-4bit",
+          frequency_penalty = 0,
+          presence_penalty = 0,
+          temperature = 0,
+          top_p = 1,
+          n = 1,
+        },
+        popup_input = {
+          submit = "<C-M>",
+        },
+      }
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
   },
 }
 
