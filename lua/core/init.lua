@@ -29,8 +29,10 @@ opt.mouse = "a"
 
 -- Numbers
 opt.number = true
+opt.relativenumber = true
 opt.numberwidth = 2
-opt.ruler = false
+opt.ruler = true
+opt.colorcolumn = "88"
 
 -- disable nvim intro
 opt.shortmess:append "sI"
@@ -51,9 +53,9 @@ opt.whichwrap:append "<>[]hl"
 
 g.mapleader = ";"
 g.pydocstring_doq_path = "/home/qpham/.pyenv/shims/doq"
-g.better_whitespace_enabled=1
-g.strip_whitespace_on_save=1
-g.strip_whitespace_confirm=0
+g.better_whitespace_enabled = 1
+g.strip_whitespace_on_save = 1
+g.strip_whitespace_confirm = 0
 
 -- disable some default providers
 for _, provider in ipairs { "node", "perl", "python3", "ruby" } do

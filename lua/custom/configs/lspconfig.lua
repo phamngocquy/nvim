@@ -39,7 +39,7 @@ lspconfig.sqlls.setup {
   capabilities = capabilities,
 }
 
-lspconfig.bufls.setup {
+lspconfig.buf_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }

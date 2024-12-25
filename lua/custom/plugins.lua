@@ -80,6 +80,11 @@ local plugins = {
     "catppuccin/nvim",
     lazy = false,
   },
+  {
+    "echasnovski/mini.icons",
+    version = false,
+    lazy = false,
+  },
 
   -- sql
   {
@@ -87,6 +92,22 @@ local plugins = {
     lazy = false,
     config = function()
       require("sqlua").setup()
+    end,
+  },
+
+  {
+    "kndndrj/nvim-dbee",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    build = function()
+      -- Install tries to automatically detect the install method.
+      -- if it fails, try calling it with one of these parameters:
+      --    "curl", "wget", "bitsadmin", "go"
+      require("dbee").install()
+    end,
+    config = function()
+      require("dbee").setup(--[[optional config]])
     end,
   },
   -- markdown render
@@ -97,9 +118,16 @@ local plugins = {
     cmd = "Glow",
   },
 
+  {
+    "tris203/precognition.nvim",
+    opts = {},
+  },
+
   -- chatgpt ui
   {
-    "jackMort/ChatGPT.nvim",
+    -- "jackMort/ChatGPT.nvim",
+    "git@gitlab.dtl:qpham/chatgpt.nvim.git",
+    branch = "f/llama3.1",
     event = "VeryLazy",
     config = function()
       require("chatgpt").setup {
@@ -130,6 +158,18 @@ local plugins = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
     },
+  },
+  {
+    "TabbyML/vim-tabby",
+    lazy = false,
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
+    init = function()
+      vim.g.tabby_agent_start_command = { "npx", "tabby-agent", "--stdio" }
+      vim.g.tabby_inline_completion_trigger = "auto" -- auto, manual
+      vim.g.tabby_inline_completion_keybinding_accept = "<C-]>" -- <Tab>
+    end,
   },
 }
 
