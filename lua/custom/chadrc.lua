@@ -18,12 +18,18 @@ M.plugins = "custom.plugins"
 -- check core.mappings for table structure
 M.mappings = require "custom.mappings"
 
--- -- Remap <C-]> in insert mode to accept inline completion
--- vim.api.nvim_set_keymap(
---   "i",
---   "<C-]>",
---   '<cmd>lua vim.fn["tabbyml#tabby#inline_completion#service#Accept"]()<CR>',
---   { noremap = true, silent = true }
+-- re-map tabby-ml
+-- vim.api.nvim_buf_set_keymap(
+--   0, -- Current buffer (equivalent to <buffer> in Vimscript)
+--   "i", -- Mode: 'i' for insert mode
+--   "<C-]>", -- Key
+--   "tabby#inline_completion#service#Accept()", -- Command
+--   {
+--     noremap = false, -- Allow remapping (necessary for <script>)
+--     silent = true,
+--     expr = true, -- Evaluate as an expression
+--     nowait = true,
+--   }
 -- )
 
 return M

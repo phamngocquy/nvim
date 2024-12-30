@@ -90,12 +90,4 @@ M.lazy_nvim = require "plugins.configs.lazy_nvim" -- config for lazy.nvim startu
 
 M.mappings = require "core.mappings"
 
--- Remap <C-]> in insert mode to accept inline completion
-vim.api.nvim_set_keymap(
-  "i",
-  "<C-]>",
-  '<cmd>lua vim.fn["tabbyml#tabby#inline_completion#service#Accept"]()<CR>',
-  { noremap = true, silent = true }
-)
-
 return M
