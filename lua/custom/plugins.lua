@@ -125,9 +125,8 @@ local plugins = {
 
   -- chatgpt ui
   {
-    -- "jackMort/ChatGPT.nvim",
-    "git@gitlab.dtl:qpham/chatgpt.nvim.git",
-    branch = "f/llama3.1",
+    "jackMort/ChatGPT.nvim",
+    branch = "main",
     event = "VeryLazy",
     config = function()
       require("chatgpt").setup {
@@ -159,18 +158,20 @@ local plugins = {
       "nvim-telescope/telescope.nvim",
     },
   },
-  {
-    "TabbyML/vim-tabby",
-    lazy = false,
-    dependencies = {
-      "neovim/nvim-lspconfig",
-    },
-    init = function()
-      vim.g.tabby_agent_start_command = { "npx", "tabby-agent", "--stdio" }
-      vim.g.tabby_inline_completion_trigger = "auto" -- auto, manual
-      vim.g.tabby_inline_completion_keybinding_accept = "<C-]>" -- <Tab>
-    end,
-  },
+
+  -- coding assistance
+  -- {
+  --   "TabbyML/vim-tabby",
+  --   lazy = false,
+  --   dependencies = {
+  --     "neovim/nvim-lspconfig",
+  --   },
+  --   init = function()
+  --     vim.g.tabby_agent_start_command = { "npx", "tabby-agent", "--stdio" }
+  --     vim.g.tabby_inline_completion_trigger = "auto" -- auto, manual
+  --     vim.g.tabby_inline_completion_keybinding_accept = "<C-]>" -- <Tab>
+  --   end,
+  -- },
 }
 
 return plugins
