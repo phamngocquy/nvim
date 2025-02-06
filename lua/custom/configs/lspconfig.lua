@@ -69,6 +69,14 @@ lspconfig.ts_ls.setup {
   },
 }
 
+lspconfig.harper_ls.setup {
+  settings = {
+    ["harper-ls"] = {
+      userDictPath = "~/dict.txt"
+    }
+  },
+}
+
 lspconfig.html.setup {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -92,4 +100,8 @@ lspconfig.sqlls.setup {
 lspconfig.docker_compose_language_service.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+}
+
+lspconfig.cmake.setup{
+
 }
