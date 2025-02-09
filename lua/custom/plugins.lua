@@ -127,12 +127,12 @@ local plugins = {
   {
     -- "jackMort/ChatGPT.nvim",
     "git@gitlab.dtl:qpham/chatgpt.nvim.git",
-    branch = "f/llama3.1",
+    branch = "main",
     event = "VeryLazy",
     config = function()
       require("chatgpt").setup {
         openai_params = {
-          model = "ModelCloud/Meta-Llama-3.1-70B-Instruct-gptq-4bit",
+          model = "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
           frequency_penalty = 0,
           presence_penalty = 0,
           max_tokens = 4095,
@@ -141,7 +141,7 @@ local plugins = {
           n = 1,
         },
         openai_edit_params = {
-          model = "ModelCloud/Meta-Llama-3.1-70B-Instruct-gptq-4bit",
+          model = "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
           frequency_penalty = 0,
           presence_penalty = 0,
           temperature = 0,
@@ -169,6 +169,20 @@ local plugins = {
       vim.g.tabby_agent_start_command = { "npx", "tabby-agent", "--stdio" }
       vim.g.tabby_inline_completion_trigger = "auto" -- auto, manual
       vim.g.tabby_inline_completion_keybinding_accept = "<C-]>" -- <Tab>
+    end,
+  },
+  {
+    "tamton-aquib/duck.nvim",
+    config = function()
+      vim.keymap.set("n", "<leader>dd", function()
+        require("duck").hatch()
+      end, {})
+      vim.keymap.set("n", "<leader>dk", function()
+        require("duck").cook()
+      end, {})
+      vim.keymap.set("n", "<leader>da", function()
+        require("duck").cook_all()
+      end, {})
     end,
   },
 }

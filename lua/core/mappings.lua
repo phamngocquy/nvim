@@ -14,10 +14,10 @@ M.general = {
     ["<C-j>"] = { "<Down>", "Move down" },
     ["<C-k>"] = { "<Up>", "Move up" },
 
-    ["<M-h>"] = { "<Left>", "Move left" },
-    ["<M-l>"] = { "<Right>", "Move right" },
-    ["<M-j>"] = { "<Down>", "Move down" },
-    ["<M-k>"] = { "<Up>", "Move up" },
+    -- ["<M-h>"] = { "<Left>", "Move left" },
+    -- ["<M-l>"] = { "<Right>", "Move right" },
+    -- ["<M-j>"] = { "<Down>", "Move down" },
+    -- ["<M-k>"] = { "<Up>", "Move up" },
   },
 
   n = {
@@ -29,8 +29,8 @@ M.general = {
     -- ["<C-Down>"] = { "<C-w>j", "Window down" },
     -- ["<C-UP>"] = { "<C-w>k", "Window up" },
 
-    ["<M-Left>"] = { "<C-w>h", "Window left" },
-    ["<M-Right>"] = { "<C-w>l", "Window right" },
+    ["<M-h>"] = { "<C-w>h", "Window left" },
+    ["<M-l>"] = { "<C-w>l", "Window right" },
     -- ["<M-Down>"] = { "<C-w>j", "Window down" },
     -- ["<M-UP>"] = { "<C-w>k", "Window up" },
 
@@ -90,14 +90,14 @@ M.tabufline = {
 
   n = {
     -- cycle through buffers
-    ["<M-Down>"] = {
+    ["<M-j>"] = {
       function()
         require("nvchad.tabufline").tabuflineNext()
       end,
       "Goto next buffer",
     },
 
-    ["<M-Up>"] = {
+    ["<M-k>"] = {
       function()
         require("nvchad.tabufline").tabuflinePrev()
       end,
@@ -315,7 +315,7 @@ M.nvterm = {
       "Toggle floating term",
     },
 
-    ["<A-h>"] = {
+    ["<A-o>"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
       end,
@@ -327,13 +327,6 @@ M.nvterm = {
         require("nvterm.terminal").toggle "vertical"
       end,
       "Toggle vertical term",
-    },
-
-    ["<C-h>"] = {
-      function()
-        require("nvterm.terminal").toggle "float"
-      end,
-      "Toggle floating term",
     },
   },
 
@@ -346,7 +339,7 @@ M.nvterm = {
       "Toggle floating term",
     },
 
-    ["<A-h>"] = {
+    ["<A-o>"] = {
       function()
         require("nvterm.terminal").toggle "horizontal"
       end,
@@ -358,13 +351,6 @@ M.nvterm = {
         require("nvterm.terminal").toggle "vertical"
       end,
       "Toggle vertical term",
-    },
-
-    ["<C-h>"] = {
-      function()
-        require("nvterm.terminal").toggle "float"
-      end,
-      "Toggle floating term",
     },
 
     -- -- new
