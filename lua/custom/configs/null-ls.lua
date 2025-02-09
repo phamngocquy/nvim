@@ -5,8 +5,34 @@ local b = null_ls.builtins
 local sources = {
 
   -- webdev stuff
-  b.formatting.prettier.with { filetypes = { "html", "markdown", "css", "js", "jsx", "javascriptreact", "javascript" } },
-  b.diagnostics.eslint.with { filetypes = { "html", "css", "js", "jsx", "javascriptreact", "javascript" } },
+  b.formatting.prettier.with {
+    filetypes = {
+      "html",
+      "markdown",
+      "css",
+      "js",
+      "jsx",
+      "javascriptreact",
+      "javascript",
+      "tsx",
+      "typescript",
+      "typescriptreact",
+    },
+  },
+  b.diagnostics.eslint.with {
+    filetypes = {
+      "html",
+      "markdown",
+      "css",
+      "js",
+      "jsx",
+      "javascriptreact",
+      "javascript",
+      "tsx",
+      "typescript",
+      "typescriptreact",
+    },
+  },
   -- others
   b.formatting.black.with { filetypes = { "python" } },
   b.formatting.gofmt.with { filetypes = { "go" } },
