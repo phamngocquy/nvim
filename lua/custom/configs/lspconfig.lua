@@ -1,7 +1,7 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
-local lspconfig = require "lspconfig"
+local lspconfig = require "lspconfig" -- stylua --no-warn
 
 -- if you just want default config for the servers then put them in a table
 local servers = { "html" }
@@ -16,8 +16,36 @@ end
 lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "python" },
+  settings = {
+    python = {
+      analysis = {
+        diagnostics = true,
+        typeCheckingMode = "on",
+      },
+    },
+  },
 }
+
+-- lspconfig.mypy.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   settings = {
+--     mypy = {
+--       strict = true, -- Enables strict type checking
+--     },
+--   },
+-- }
+
+-- lspconfig.ruff.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   settings = {
+--     ruff_lsp = {
+--       diagnostics = true,
+--       organizeImports = true,
+--     },
+--   },
+-- }
 
 lspconfig.yamlls.setup {
   on_attach = on_attach,

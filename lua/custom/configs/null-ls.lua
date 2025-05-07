@@ -36,12 +36,13 @@ local sources = {
   -- others
   b.formatting.black.with { filetypes = { "python" } },
   b.formatting.gofmt.with { filetypes = { "go" } },
-  b.formatting.shfmt.with { filetypes = { "sh" } },
+  b.formatting.shfmt.with { filetypes = { "sh" }, extra_args = { "-i", "2", "-ci", "-sr" } },
   b.formatting.yamlfmt.with { filetypes = { "yml", "yaml" } },
   b.formatting.fixjson.with { filetypes = { "json", "jsonc" } },
   b.formatting.clang_format.with { filetypes = { "cpp", "c" } },
   b.formatting.sqlfmt.with { filetypes = { "sql" } },
-  -- b.formatting.dockerls.with { filetypes = { "dockerfile" } },
+
+  b.diagnostics.mypy.with { filetypes = { "python" } },
 
   -- Lua
   b.formatting.stylua,
@@ -53,4 +54,5 @@ local sources = {
 null_ls.setup {
   debug = false,
   sources = sources,
+  temp_dir = "/tmp",
 }

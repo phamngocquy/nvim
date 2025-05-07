@@ -71,6 +71,10 @@ local plugins = {
   {
     "heavenshell/vim-pydocstring",
     lazy = false,
+    init = function()
+      vim.g.pydocstring_formatter = "google"
+      vim.g.pydocstring_doq_path = "~/.local/bin/doq"
+    end,
   },
   {
     "wfxr/minimap.vim",
@@ -122,69 +126,139 @@ local plugins = {
     "tris203/precognition.nvim",
     opts = {},
   },
+  {
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    lazy = false,
+    version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+    opts = {
+      -- add any opts here
+      -- for example
+      -- provider = "openai",
+      -- openai = {
+      --   endpoint = "https://api.openai.com/v1",
+      --   model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+      --   timeout = 30000, -- timeout in milliseconds
+      --   temperature = 0, -- adjust if needed
+      --   max_tokens = 4096,
+      --   reasoning_effort = "high", -- only supported for "o" models
+      -- },
+
+      provider = "Qwen",
+      vendors = {
+        Qwen = {
+          __inherited_from = "openai",
+          api_key_name = "AI_DTL_API_KEY",
+          endpoint = "http://api.ai.dtl/api/v2",
+          model = "poe/deepseek-r1",
+        },
+      },
+    },
+    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    build = "make",
+    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      --- The below dependencies are optional,
+      "echasnovski/mini.pick", -- for file_selector provider mini.pick
+      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+      "ibhagwan/fzf-lua", -- for file_selector provider fzf
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      {
+        -- support for image pasting
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+          -- recommended settings
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            -- required for Windows users
+            use_absolute_path = true,
+          },
+        },
+      },
+      {
+        -- Make sure to set this up properly if you have lazy=true
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
+    },
+  },
 
   -- chatgpt ui
-  {
-    -- "jackMort/ChatGPT.nvim",
-    "git@gitlab.dtl:qpham/chatgpt.nvim.git",
-    branch = "main",
-    event = "VeryLazy",
-    config = function()
-      require("chatgpt").setup {
-        openai_params = {
-          model = "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
-          frequency_penalty = 0,
-          presence_penalty = 0,
-          max_tokens = 4095,
-          temperature = 0.2,
-          top_p = 0.1,
-          n = 1,
-        },
-        openai_edit_params = {
-          model = "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
-          frequency_penalty = 0,
-          presence_penalty = 0,
-          temperature = 0,
-          top_p = 1,
-          n = 1,
-        },
-        popup_input = {
-          submit = "<C-M>",
-        },
-      }
-    end,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-  },
-  {
-    "TabbyML/vim-tabby",
-    lazy = false,
-    dependencies = {
-      "neovim/nvim-lspconfig",
-    },
-    init = function()
-      vim.g.tabby_agent_start_command = { "npx", "tabby-agent", "--stdio" }
-      vim.g.tabby_inline_completion_trigger = "auto" -- auto, manual
-      vim.g.tabby_inline_completion_keybinding_accept = "<C-]>" -- <Tab>
-    end,
-  },
-  {
-    "tamton-aquib/duck.nvim",
-    config = function()
-      vim.keymap.set("n", "<leader>dd", function()
-        require("duck").hatch()
-      end, {})
-      vim.keymap.set("n", "<leader>dk", function()
-        require("duck").cook()
-      end, {})
-      vim.keymap.set("n", "<leader>da", function()
-        require("duck").cook_all()
-      end, {})
-    end,
-  },
+  -- {
+  --   -- "jackMort/ChatGPT.nvim",
+  --   "git@gitlab.dtl:qpham/chatgpt.nvim.git",
+  --   branch = "main",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("chatgpt").setup {
+  --       openai_params = {
+  --         model = "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
+  --         frequency_penalty = 0,
+  --         presence_penalty = 0,
+  --         max_tokens = 4095,
+  --         temperature = 0.2,
+  --         top_p = 0.1,
+  --         n = 1,
+  --       },
+  --       openai_edit_params = {
+  --         model = "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
+  --         frequency_penalty = 0,
+  --         presence_penalty = 0,
+  --         temperature = 0,
+  --         top_p = 1,
+  --         n = 1,
+  --       },
+  --       popup_input = {
+  --         submit = "<C-M>",
+  --       },
+  --     }
+  --   end,
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope.nvim",
+  --   },
+  -- },
+  -- {
+  --   "TabbyML/vim-tabby",
+  --   lazy = false,
+  --   dependencies = {
+  --     "neovim/nvim-lspconfig",
+  --   },
+  --   init = function()
+  --     vim.g.tabby_agent_start_command = { "npx", "tabby-agent", "--stdio" }
+  --     vim.g.tabby_inline_completion_trigger = "auto" -- auto, manual
+  --     vim.g.tabby_inline_completion_keybinding_accept = "<C-]>" -- <Tab>
+  --   end,
+  -- },
+  -- {
+  --   "tamton-aquib/duck.nvim",
+  --   config = function()
+  --     vim.keymap.set("n", "<leader>dd", function()
+  --       require("duck").hatch()
+  --     end, {})
+  --     vim.keymap.set("n", "<leader>dk", function()
+  --       require("duck").cook()
+  --     end, {})
+  --     vim.keymap.set("n", "<leader>da", function()
+  --       require("duck").cook_all()
+  --     end, {})
+  --   end,
+  -- },
 }
 
 return plugins
