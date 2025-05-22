@@ -114,7 +114,6 @@ local plugins = {
       require("dbee").setup(--[[optional config]])
     end,
   },
-  -- markdown render
   {
     "ellisonleao/glow.nvim",
     lazy = true,
@@ -124,7 +123,33 @@ local plugins = {
 
   {
     "tris203/precognition.nvim",
-    opts = {},
+    lazy = false,
+    opts = {
+      startVisible = true,
+      showBlankVirtLine = true,
+      highlightColor = { link = "Comment" },
+      hints = {
+        Caret = { text = "^", prio = 2 },
+        Dollar = { text = "$", prio = 1 },
+        MatchingPair = { text = "%", prio = 5 },
+        Zero = { text = "0", prio = 1 },
+        w = { text = "w", prio = 10 },
+        b = { text = "b", prio = 9 },
+        e = { text = "e", prio = 8 },
+        W = { text = "W", prio = 7 },
+        B = { text = "B", prio = 6 },
+        E = { text = "E", prio = 5 },
+      },
+      gutterHints = {
+        G = { text = "G", prio = 10 },
+        gg = { text = "gg", prio = 9 },
+        PrevParagraph = { text = "{", prio = 8 },
+        NextParagraph = { text = "}", prio = 8 },
+      },
+      disabled_fts = {
+        "startify",
+      },
+    },
   },
   {
     "yetone/avante.nvim",
@@ -196,69 +221,6 @@ local plugins = {
       },
     },
   },
-
-  -- chatgpt ui
-  -- {
-  --   -- "jackMort/ChatGPT.nvim",
-  --   "git@gitlab.dtl:qpham/chatgpt.nvim.git",
-  --   branch = "main",
-  --   event = "VeryLazy",
-  --   config = function()
-  --     require("chatgpt").setup {
-  --       openai_params = {
-  --         model = "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
-  --         frequency_penalty = 0,
-  --         presence_penalty = 0,
-  --         max_tokens = 4095,
-  --         temperature = 0.2,
-  --         top_p = 0.1,
-  --         n = 1,
-  --       },
-  --       openai_edit_params = {
-  --         model = "Qwen/Qwen2.5-32B-Instruct-GPTQ-Int4",
-  --         frequency_penalty = 0,
-  --         presence_penalty = 0,
-  --         temperature = 0,
-  --         top_p = 1,
-  --         n = 1,
-  --       },
-  --       popup_input = {
-  --         submit = "<C-M>",
-  --       },
-  --     }
-  --   end,
-  --   dependencies = {
-  --     "MunifTanjim/nui.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-telescope/telescope.nvim",
-  --   },
-  -- },
-  -- {
-  --   "TabbyML/vim-tabby",
-  --   lazy = false,
-  --   dependencies = {
-  --     "neovim/nvim-lspconfig",
-  --   },
-  --   init = function()
-  --     vim.g.tabby_agent_start_command = { "npx", "tabby-agent", "--stdio" }
-  --     vim.g.tabby_inline_completion_trigger = "auto" -- auto, manual
-  --     vim.g.tabby_inline_completion_keybinding_accept = "<C-]>" -- <Tab>
-  --   end,
-  -- },
-  -- {
-  --   "tamton-aquib/duck.nvim",
-  --   config = function()
-  --     vim.keymap.set("n", "<leader>dd", function()
-  --       require("duck").hatch()
-  --     end, {})
-  --     vim.keymap.set("n", "<leader>dk", function()
-  --       require("duck").cook()
-  --     end, {})
-  --     vim.keymap.set("n", "<leader>da", function()
-  --       require("duck").cook_all()
-  --     end, {})
-  --   end,
-  -- },
 }
 
 return plugins
